@@ -1,3 +1,4 @@
+<% if current_user.present? %>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -11,7 +12,9 @@
 <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
            <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">Sign Out</a>
+           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link'%>
       </li>
     </ul>
   </nav>
+  <% else %>
+  <% end %>
