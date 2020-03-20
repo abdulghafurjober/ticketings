@@ -7,17 +7,34 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/6d90f39943.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" >
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.js"></script>
 </head>
 
-<body class="sidebar-mini">
+<body class="d-flex flex-column sidebar-mini">
     <div class="wrapper">
-        <%= render partial: "layouts/header" %>
-        <%= render partial: "layouts/sidebar" %>
-        <div class="content-wrapper">
-            <%= yield %>
-        </div>
-        <%= render partial: "layouts/footer" %>
+        <% if current_user.present? %>
+            <%= render partial: "layouts/header" %>
+            <%= render partial: "layouts/sidebar" %>
+            <div class="content-wrapper">
+                <%= yield %> <!-- will show the dashboard -->
+            </div>
+        <% else %>
+            <div>
+                <%= yield %> <!-- will show the authntication page -->
+            </div>
+        <% end %>
+        
+        <% if current_user.present?%>
+            <%=render partial: "layouts/footer" %>
+        <% end %>
     </div>
 </body>
 </html>
