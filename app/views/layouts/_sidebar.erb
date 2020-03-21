@@ -19,30 +19,86 @@
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-item has-treeview menu-open">
-          <a href="#" class="nav-link active">
-            <i class="nav-icon fas fa-tachometer-alt"></i>
+
+        <li class="nav-item has-treeview">
+          <a class="nav-link <%= controller_name == 'dashboard' ? 'active' : nil%>" href="/">
+            <i class="nav-icon fas fa-tachometer-alt"></i> 
+            <p>Dashboard</p>
+          </a>
+        </li>
+
+        <li class="nav-item has-treeview">
+        <a class="nav-link <%= controller_name == 'booking' ? 'active' : nil%>" href="/booking" data-no-turbolink='true'>
+            <i class="nav-icon fas fa-book"></i> 
+            <p>Bookings</p>
+            <i class="fas fa-angle-left right"></i>
+        </a>
+        <!--
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-book"></i>
             <p>
-              Activity
-              <i class="right fas fa-angle-left"></i>
+              Bookings
+              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
+        -->
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="./index.html" class="nav-link active">
+                <a href="./booking/index" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Mine</p>
+              <p>Booking Listings</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="./index2.html" class="nav-link">
+              <a href="./booking/index2" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
-                <p>Feed</p>
+                <p>New Booking</p>
               </a>
             </li>
           </ul>
         </li>
-      </ul>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+          <i class="nav-icon fas fa-users"></i>
+            <p>
+              Customer
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="./customer/index" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Customer Lists</p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="/customer/index2" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>New Customer</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-tasks"></i>
+            <p>
+              Reports
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="./report/index" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>KIV</p>
+              </a>
+            </li>
+          </ul>
+        </li>
     </nav>
     <!-- /.sidebar-menu -->
   </div>
