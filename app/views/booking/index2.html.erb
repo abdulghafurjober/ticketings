@@ -6,8 +6,24 @@
 <!-- form start -->
 <div class="card-body">
 	<div class="form-group">
-		<label for="exampleInputEmail1">Booking No:</label>
+		<label for="exampleInputEmail1">Customer Name:</label>
 		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Booking No">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Customer Phone:</label>
+		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Booking No">
+	</div>
+	<div class="form-group">
+		<label for="exampleInputEmail1">Customer Emergency Contact:</label>
+		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Booking No">
+	</div>
+		<div class="form-group">
+		<label for="exampleInputEmail1">Customer Passport:</label>
+		<input type="text" class="form-control" id="exampleInputEmail1" placeholder="Booking No">
+	</div>
+
+	<div>
+		<%=render 'form_booking' %>
 	</div>
 	<!-- select -->
 	<div class="form-group">
@@ -21,20 +37,6 @@
 		</select>
 	</div>
 	<div class="form-group">
-		<label>From</label>
-		<select class="form-control">
-			<option>Malaysia</option>
-			<option>Indonesia</option>
-		</select>
-	</div>
-		<div class="form-group">
-		<label>To</label>
-		<select class="form-control">
-			<option>Malaysia</option>
-			<option>Indonesia</option>
-		</select>
-	</div>
-	<div class="form-group">
 		<label>Status</label>
 		<select class="form-control">
 			<option>Available</option>
@@ -43,21 +45,10 @@
 			<option>Others</option>
 		</select>
 	</div>
-	<div class="form-group">
-		<label>Date range:</label>
-		<div class="input-group">
-			<div class="input-group-prepend">
-				<span class="input-group-text">
-				<i class="far fa-calendar-alt"></i>
-				</span>
-			</div>
-			<input type="text" class="form-control float-right" id="reservation">
-		</div>
+	
 		<!-- /.input group -->
 </div>
 	
-
-
 <div class="card-footer">
 	<button type="submit" class="btn btn-primary">Submit</button>
 </div>
