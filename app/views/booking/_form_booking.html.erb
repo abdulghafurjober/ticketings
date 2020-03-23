@@ -1,33 +1,106 @@
-
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="trip_detail" id="inlineRadio1" value="0" checked>
-    <label class="form-check-label" for="inlineRadio1">One Way</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="trip_detail" id="inlineRadio3" value="1">
-    <label class="form-check-label" for="inlineRadio3">Two Way</label>
-</div>
-<div id="#">
-    <div class="mb-3">
-        <small class="mb-5" style="color:blue">One way trip (Malaysia-Indonesia)</small>
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-12">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="profile_detail" id="inlineRadio1" value="0" checked>
+      <label class="form-check-label" for="inlineRadio1">One Trip (Malaysia - Indonesia)</label>
     </div>
-</div>
-<div id="extra">
-    <div class="mb-3">
-        <small class="mb-5"  style="color:blue">Round Trip (Indonesia-Malaysia-Indonesia)</small>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="profile_detail" id="inlineRadio3" value="1">
+      <label class="form-check-label" for="inlineRadio3">Round Trip (Indonesia - Malaysia - Indonesia)</label>
     </div>
+    <div id="oneway-trip"><!-- one trip open -->
+    <div class="card-body">
+      <div class="form-group">
+      <label>Departing Date(Malaysia-Indonesia):</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <i class="far fa-calendar-alt"></i>
+            </span>
+          </div>
+          <input type="text" class="form-control float-right" id="reservation">
+        </div>
+      </div>
+      </div>
+    </div><!-- one way trip close -->
+    <div id="extra"><!---->
+      <div class="card-body">
+      <div class="form-group">
+        <label>Departing Date (Indonesia-Malaysia):</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="far fa-calendar-alt"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control float-right" id="reservation">
+          </div>
+        </div>
+        <div class="form-group">
+        <label>Departing Date (Malaysia-Indonesia):</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <i class="far fa-calendar-alt"></i>
+              </span>
+            </div>
+            <input type="text" class="form-control float-right" id="reservation">
+          </div>
+        </div>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-1">
+  </div>
 </div>
-<!--
 <script>
 $('#extra').hide()
 $('input:radio[name="profile_detail"]').change(function(){
-    if ($(this).is(':checked') && $(this).val() == 1) {
-    $('#extra').show()
-    $('#current-profile').hide()
-    } else {
-    $('#current-profile').show()
-    $('#extra').hide()
+      if ($(this).is(':checked') && $(this).val() == 1) {
+        $('#extra').show()
+        $('#oneway-trip').hide()
+      } else {
+        $('#oneway-trip').show()
+        $('#extra').hide()
+      }
+  });
+
+
+$( document ).ready(function() {
+  var maxChars = 500;
+  var textLength = 0;
+  var comment = "";
+  var outOfChars = 'You have reached the limit of ' + maxChars + ' characters';
+
+  /* initalize for when no data is in localStorage */
+  var count = maxChars;
+  $('#characterLeft').text(count + ' characters left');
+
+  /* fix val so it counts carriage returns */
+  $.valHooks.textarea = {
+    get: function(e) {
+      return e.value.replace(/\r?\n/g, "\r\n");
     }
+  };
+
+  function checkCount() {
+    textLength = $('#remark').val().length;
+    if (textLength >= maxChars) {
+      $('#characterLeft').text(outOfChars);
+    }
+    else {
+      count = maxChars - textLength;
+      $('#characterLeft').text(count + ' characters left');
+    }
+  }
+
+  /* on keyUp: update #characterLeft as well as count & comment in localStorage */
+  $('#remark').keyup(function() {
+    checkCount();
+    comment = $(this).val();
+  });
+
 });
-<script>
--->
+</script>
